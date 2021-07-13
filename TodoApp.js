@@ -2,34 +2,14 @@ import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import EditTodo from './EditTodo';
 
-export default function App() {
+export default function TodoApp({navigation}) {
   const [todo, setTodo] = useState(['Glints', 'Office', 'Hour']);
 
-  const [ketikan, setKetikan] = useState('');
+  const [ketikan, setKetikan] = useState('Glints');
 
   const [onEditTodo, setOnEditTodo] = useState(null);
 
   const [editTodo, setEditTodo] = useState('');
-
-  // //Ternary Operator
-  // onEditTodo === 1
-  //   ? console.log('a')
-  //   : onEditTodo === 2
-  //   ? console.log('b')
-  //   : onEditTodo === 3
-  //   ? console.log('c')
-  //   : console.log('d');
-
-  // //If else
-  // if (onEditTodo === 1) {
-  //   console.log('a');
-  // } else if (onEditTodo === 2) {
-  //   console.log('b');
-  // } else if (onEditTodo === 3) {
-  //   console.log('c');
-  // } else {
-  //   console.log('d');
-  // }
 
   const handleSave = index => {
     let newTodo = [...todo];
@@ -41,14 +21,11 @@ export default function App() {
 
   return (
     <View>
-      <Text>TODO APP</Text>
       <TextInput
         placeholder="placeholder"
         value={ketikan}
         onChangeText={e => setKetikan(e)}
-        // multiline={true}
       />
-      <Text>Isi ketikan user adalah : {ketikan}</Text>
       <TouchableOpacity
         onPress={() => {
           let newTodo = [...todo, ketikan];
@@ -86,6 +63,10 @@ export default function App() {
           )}
         </View>
       ))}
+
+      <TouchableOpacity onPress={() => navigation.navigate('Details')}>
+        <Text>Go to Details</Text>
+      </TouchableOpacity>
     </View>
   );
 }
