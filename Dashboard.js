@@ -11,7 +11,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSelector, useDispatch} from 'react-redux';
-import {changeName} from './src/redux/action/UserAction';
+import {changeName, getMovies} from './src/redux/action/UserAction';
 
 export default function Dashboard({navigation}) {
   const dispatch = useDispatch();
@@ -23,20 +23,14 @@ export default function Dashboard({navigation}) {
 
   const user_redux = useSelector(state => state.user);
 
-  console.log('user ', user_redux);
+  const movies_redux = useSelector(state => state.user.movies);
 
   useEffect(async () => {
     const e = await AsyncStorage.getItem('username');
     setUser(e);
-
-    fetch(
-      'https://api.themoviedb.org/3/movie/now_playing?api_key=570c36d75740509c00d865a804d826a5&language=en-US&page=1',
-    )
-      .then(e => e.json())
-      .then(e => {
-        setMovies(e.results);
-        setNowPlaying(e.results);
-      });
+    const a = await dispatch(getMovies());
+    console.log('a ', a);
+    setNowPlaying(a);
   }, []);
 
   return (
@@ -60,11 +54,11 @@ export default function Dashboard({navigation}) {
           }}
         />
       </View>
-      {movies.length === 0 ? (
+      {movies_redux.length === 0 ? (
         <Text>Oops... your movie is not ready</Text>
       ) : (
         <FlatList
-          data={movies}
+          data={movies_redux}
           keyExtractor={(item, i) => {
             return i;
           }}
