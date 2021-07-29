@@ -28,9 +28,7 @@ export default function Dashboard({navigation}) {
   useEffect(async () => {
     const e = await AsyncStorage.getItem('username');
     setUser(e);
-    const a = await dispatch(getMovies());
-    console.log('a ', a);
-    setNowPlaying(a);
+    dispatch(getMovies());
   }, []);
 
   return (

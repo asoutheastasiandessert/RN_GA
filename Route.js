@@ -1,5 +1,8 @@
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  getFocusedRouteNameFromRoute,
+  NavigationContainer,
+} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Login from './Login';
@@ -10,11 +13,20 @@ import MovieDetails from './MovieDetails';
 import Search from './Search';
 import {Provider} from 'react-redux';
 import {store} from './src/redux/store';
+import {useEffect} from 'react';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function DashboardStack() {
+function DashboardStack({navigation, route}) {
+  useEffect(() => {
+    let a = getFocusedRouteNameFromRoute(route);
+    if (a === 'Details') {
+      navigation.setOptions({tabBarVisible: false});
+    } else {
+      navigation.setOptions({tabBarVisible: true});
+    }
+  }, [route]);
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -72,7 +84,7 @@ function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Login" component={Login} />
+          {/* <Stack.Screen name="Login" component={Login} /> */}
           <Stack.Screen
             options={{headerShown: false}}
             name="Dashboard"

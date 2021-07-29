@@ -1,5 +1,4 @@
 export const changeName = text => {
-  console.log('change', text);
   return {
     type: 'CHANGE_NAME',
     payload: text,
@@ -13,7 +12,6 @@ export const getMovies = (search, param2) => {
         `https://api.themoviedb.org/3/movie/now_playing?api_key=570c36d75740509c00d865a804d826a5&language=en-US&page=1`,
       );
       const resJson = await res.json();
-      // console.log('res ', resJson);
       dispatch({
         type: 'GET_MOVIES',
         movies: resJson.results,
