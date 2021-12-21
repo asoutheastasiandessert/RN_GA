@@ -28,7 +28,12 @@ export default function Dashboard({navigation}) {
   useEffect(async () => {
     const e = await AsyncStorage.getItem('username');
     setUser(e);
-    dispatch(getMovies());
+    await dispatch(getMovies());
+    // if (login.message === 'LOGIN SUCCES') {
+    //   navigation.navigate('Profile');
+    // } else {
+    //   navigation.navigate('Search');
+    // }
   }, []);
 
   return (

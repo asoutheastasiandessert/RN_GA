@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "349688277915",
+    "project_id": "daybreak-rn-game",
+    "storage_bucket": "daybreak-rn-game.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349688277915:android:f07b3c9d1d9d8242848f3e",
+        "android_client_info": {
+          "package_name": "com.daybreak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349688277915-chqnl3aldjjojc6trfgdogf3r9onjtpg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.daybreak",
+            "certificate_hash": "8b6018049b06411f1d8e1b740b75a4771b6de072"
+          }
+        },
+        {
+          "client_id": "349688277915-1282fig3em7vgqm6crr8dhdtpqkc14j9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCtQkiQmNMCfHYtbQM0POMoKVP8jNMS24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349688277915-1282fig3em7vgqm6crr8dhdtpqkc14j9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349688277915:android:6824c83d23f2ff2b848f3e",
+        "android_client_info": {
+          "package_name": "com.ga_rn_13"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349688277915-1282fig3em7vgqm6crr8dhdtpqkc14j9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCtQkiQmNMCfHYtbQM0POMoKVP8jNMS24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349688277915-1282fig3em7vgqm6crr8dhdtpqkc14j9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -16,7 +16,7 @@ export const getMovies = (search, param2) => {
         type: 'GET_MOVIES',
         movies: resJson.results,
       });
-      return {message: 'success', movies: resJson.results};
+      return {message: 'LOGIN FAIL'};
     } catch (error) {
       // dispatch({
       //   type: 'FAIL_LOGIN',

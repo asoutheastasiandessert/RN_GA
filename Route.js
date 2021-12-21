@@ -14,6 +14,7 @@ import Search from './Search';
 import {Provider} from 'react-redux';
 import {store} from './src/redux/store';
 import {useEffect} from 'react';
+import {Text} from 'react-native';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -21,12 +22,13 @@ const Tab = createBottomTabNavigator();
 function DashboardStack({navigation, route}) {
   useEffect(() => {
     let a = getFocusedRouteNameFromRoute(route);
-    if (a === 'Details') {
+    if (a === 'See all details') {
       navigation.setOptions({tabBarVisible: false});
     } else {
       navigation.setOptions({tabBarVisible: true});
     }
   }, [route]);
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -82,15 +84,32 @@ function DashboardMenu() {
 function App() {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          {/* <Stack.Screen name="Login" component={Login} /> */}
-          <Stack.Screen
+      <NavigationContainer
+        linking={{
+          prefixes: ['https://rangga.com/'],
+          enabled: true,
+          config: {
+            screens: {
+              Home: {path: 'home'},
+              Search: {path: 'search'},
+              Profile: {path: 'profile'},
+            },
+          },
+          // getStateFromPath: e => {
+          //   // const token = e.split('=')[1];
+          //   console.log('token ', e);
+          // },
+        }}
+        fallback={<Text>Loading...</Text>}>
+        {/* <Stack.Navigator> */}
+        {/* <Stack.Screen name="Login" component={Login} /> */}
+        {/* <Stack.Screen
             options={{headerShown: false}}
             name="Dashboard"
             component={DashboardMenu}
           />
-        </Stack.Navigator>
+        </Stack.Navigator> */}
+        <DashboardMenu />
       </NavigationContainer>
     </Provider>
   );
